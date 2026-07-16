@@ -61,6 +61,24 @@ public class ReverseString {
         System.out.println("Reversed Using Streams = " + reversedUsingStream);
         System.out.println("Reversed Using Streams explained in depth = " + reversedResult);
 
+
+
+        System.out.println(("---using two Pointer Pattern"));
+        String hi = "hello";
+        char[] character = hi.toCharArray();
+        int left = 0;
+        int right =  character.length - 1;
+
+        while(left < right){
+            char temp = character[left];
+            character[left]= character[right];
+            character[right] = temp;
+
+            left++;
+            right--;
+        }
+        System.out.println("Result 2 pointer" + new String(character)) ;
+
     }
     public static String reverseRecursion(String name){
         if(name.isEmpty()){
@@ -68,7 +86,12 @@ public class ReverseString {
         }
         return reverseRecursion(name.substring(1)) + name.charAt(0);
     }
-
+//            | Iteration | `left` | `right` | `char[left]` | char[right] | `temp` | Action                                                                | Array After Action |
+//            | --------- | :----: | :-----: | :---------: | :----------: | :----: | --------------------------------------------------------------------- | ------------------ |
+//            | Initial   |    0   |    4    |     `h`     |      `o`     |    -   | Initial array                                                         | `[h, e, l, l, o]`  |
+//            | 1         |    0   |    4    |     `h`     |      `o`     |   `h`  | `temp = h` → `character[left] = o` → `character[right] = h` → `left++`, `right--` | `[o, e, l, l, h]`  |
+//            | 2         |    1   |    3    |     `e`     |      `l`     |   `e`  | `temp = e` → `character[left] = l` → `character[right] = e` → `left++`, `right--` | `[o, l, l, e, h]`  |
+//            | 3         |    2   |    2    |     `l`     |      `l`     |    -   | `left < right` is **false** (`2 < 2`), so the loop stops. No swap.    | `[o, l, l, e, h]`  |
 
 
 }
